@@ -23,7 +23,7 @@ $myroot = $REX['INCLUDE_PATH'].'/addons/'.$myself.'/';
 ////////////////////////////////////////////////////////////////////////////////
 $REX['ADDON']['rxid'][$myself]        = '720';
 $REX['ADDON']['page'][$myself]        = $myself;
-$REX['ADDON']['name'][$myself]        = 'MySQL Adminer';
+$REX['ADDON']['name'][$myself]        = 'MySQL Tools';
 $Revision = '';
 $REX['ADDON'][$myself]['VERSION'] = array
 (

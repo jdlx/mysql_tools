@@ -108,7 +108,9 @@ if($func=='sessionstart')
 {
   // ADD IP TO HTACCESS
   $ht_file  = $REX['INCLUDE_PATH'].'/addons/'.$myself.'/libs/adminer-3.2.1/adminer/.htaccess';
-  $ht_conts = 'Allow from '.$_SERVER['REMOTE_ADDR'];
+  $ht_conts = 'Order Deny,Allow
+Deny from all
+Allow from '.$_SERVER['REMOTE_ADDR'];
   rex_put_file_contents($ht_file,$ht_conts);
 
   // SWITCH HTTP/HTTPS

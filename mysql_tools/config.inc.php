@@ -60,6 +60,7 @@ if ($REX['REDAXO'])
   }
 }
 
+
 // BACKEND CSS
 ////////////////////////////////////////////////////////////////////////////////
 $header = '  <link rel="stylesheet" type="text/css" href="../files/addons/'.$myself.'/backend.css" media="screen, projection, print" />';

@@ -30,7 +30,7 @@ if($faceless != 1)
   //////////////////////////////////////////////////////////////////////////////
   if(!$subpage)
   {
-    $subpage = 'adminer';  /* DEFAULT SUBPAGE */
+    $subpage = 'settings';  /* DEFAULT SUBPAGE */
   }
   require $REX['INCLUDE_PATH'] . '/addons/'.$myself.'/pages/'.$subpage.'.inc.php';
 

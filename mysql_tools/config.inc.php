@@ -41,7 +41,7 @@ $REX['PERM'][]                        = $myself.'[]';
 // SETTINGS
 ////////////////////////////////////////////////////////////////////////////////
 // --- DYN
-$REX["ADDON"]["mysql_adminer"]["httpsdomain"] = '';
+$REX["ADDON"]["mysql_tools"]["httpsdomain"] = '';
 // --- /DYN
 
 

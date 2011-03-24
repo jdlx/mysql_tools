@@ -82,5 +82,5 @@ $REX['ADDON'][$myself]['SUBPAGES'] = array (
 //////////////////////////////////////////////////////////////////////////////
 if($REX['REDAXO'] && !isset($REX['USER']))
 {
-  unlink($REX['INCLUDE_PATH'].'/addons/'.$myself.'/libs/adminer-3.2.0/adminer/.htaccess');
+  unlink($REX['INCLUDE_PATH'].'/addons/'.$myself.'/libs/adminer-3.2.1/adminer/.htaccess');
 }

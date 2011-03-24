@@ -83,7 +83,7 @@ echo '
       <input type="hidden" name="func"            value="sessionstart" />
 
           <fieldset class="rex-form-col-1">
-            <legend>Adminer 3.2.0</legend>
+            <legend>Adminer 3.2.1</legend>
             <div class="rex-form-wrapper">
 
               <div class="rex-form-row rex-form-element-v2">
@@ -107,7 +107,7 @@ echo '
 if($func=='sessionstart')
 {
   // ADD IP TO HTACCESS
-  $ht_file  = $REX['INCLUDE_PATH'].'/addons/'.$myself.'/libs/adminer-3.2.0/adminer/.htaccess';
+  $ht_file  = $REX['INCLUDE_PATH'].'/addons/'.$myself.'/libs/adminer-3.2.1/adminer/.htaccess';
   $ht_conts = 'Allow from '.$_SERVER['REMOTE_ADDR'];
   rex_put_file_contents($ht_file,$ht_conts);
 
@@ -125,7 +125,7 @@ echo '
   <div class="rex-addon-output">
     <div class="rex-form">
   
-    <form id="openadminer" action="'.$domain.'/redaxo/include/addons/'.$myself.'/libs/adminer-3.2.0/adminer/index.php" method="POST" target="'.$_REQUEST['PHPSESSID'].'">
+    <form id="openadminer" action="'.$domain.'/redaxo/include/addons/'.$myself.'/libs/adminer-3.2.1/adminer/index.php" method="POST" target="'.$_REQUEST['PHPSESSID'].'">
       <input type="hidden" name="username"        value="'.$REX['DB']['1']['LOGIN'].'" />
       <input type="hidden" name="server"          value="'.$REX['DB']['1']['HOST'].'" />
       <input type="hidden" name="password"        value="'.$REX['DB']['1']['PSW'].'" />

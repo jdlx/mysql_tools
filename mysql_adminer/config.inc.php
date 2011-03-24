@@ -78,9 +78,15 @@ $REX['ADDON'][$myself]['SUBPAGES'] = array (
 );
 
 
-// CHECK ACTIVE SESSION
+// DUMP HTACCESS FILES
 //////////////////////////////////////////////////////////////////////////////
+$adminer_ht  = $REX['INCLUDE_PATH'].'/addons/'.$myself.'/libs/adminer-3.2.1/adminer/.htaccess';
+$editor_ht   = $REX['INCLUDE_PATH'].'/addons/'.$myself.'/libs/adminer-3.2.1/editor/.htaccess';
+
 if($REX['REDAXO'] && !isset($REX['USER']))
 {
-  unlink($REX['INCLUDE_PATH'].'/addons/'.$myself.'/libs/adminer-3.2.1/adminer/.htaccess');
+  if(file_exists($adminer_ht))
+    unlink($adminer_ht);
+  if(file_exists($editor_ht))
+    unlink($editor_ht);
 }

@@ -1,9 +1,8 @@
 <?php
 /**
-* Addon_Template
+* MySQL Tools Addon
 *
 * @author http://rexdev.de
-* @link   http://www.redaxo.de/180-0-addon-details.html?addon_id=720
 *
 * @package redaxo4.3
 * @version 0.1

@@ -1,42 +1,13 @@
 /**
-* Addon_Template
+* MySQL Tools Addon
 *
-* @author <a href="http://rexdev.de">rexdev.de</a>
+* @author http://rexdev.de
 *
 * @package redaxo4
 * @version 1.0
 * $Id: backend.css 85 2010-10-21 14:43:55Z j3ff3 $:
 */
 
-/* OVERRIDES FÜR css_form.css
-
-NEU CHECKEN, BZW. ADDON SPEZIFISCH MACHEN..
-
-div.rex-form div.rex-form-row p.rex-form-radio label {
-    display:inline-block;
-    float:none;
-    margin:0 20px 0 0;
-    padding:5px 0 0 0;
-    width:auto;
-  }
-
-p.rex-form-col-a span {
-    clear: both;
-    display: block;
-    float: left;
-    width: 145px;
-    padding: 5px;
-  }
-
-div.rex-form-row p.rex-form-label-right input.rex-form-checkbox {
-    margin: 4px 5px 0 0;
-    float:left;
-    clear:none;
-  }
-
-div.rex-form-row p.rex-form-label-right label {
-    margin: 3px 0 0 0;
-  }*/
 
 /* ADDON HEADLINE */
 span.addonversion {

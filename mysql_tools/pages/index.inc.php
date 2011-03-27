@@ -18,6 +18,24 @@ $faceless = rex_request('faceless', 'string');
 
 if($faceless != 1)
 {
+
+
+  // BACKEND CSS
+  //////////////////////////////////////////////////////////////////////////////
+  if ($REX['REDAXO'])
+  {
+    rex_register_extension('PAGE_HEADER', 'mysql_tools_header');
+
+    function mysql_tools_header($params)
+    {
+      $params['subject'] .= PHP_EOL.'  <!-- mysql_tools Addon -->'.
+                            PHP_EOL.'  <link rel="stylesheet" type="text/css" href="../files/addons/mysql_tools/backend.css" media="screen, projection, print" />'.
+                            PHP_EOL.'  <!-- /mysql_tools Addon -->'.PHP_EOL;
+      return $params['subject'];
+    }
+  }
+
+
   // REX BACKEND LAYOUT TOP
   //////////////////////////////////////////////////////////////////////////////
   require $REX['INCLUDE_PATH'] . '/layout/top.php';

@@ -60,15 +60,6 @@ if ($REX['REDAXO'])
 }
 
 
-// BACKEND CSS
-////////////////////////////////////////////////////////////////////////////////
-$header = '  <link rel="stylesheet" type="text/css" href="../files/addons/'.$mypage.'/backend.css" media="screen, projection, print" />';
-
-if ($REX['REDAXO']) {
-  rex_register_extension('PAGE_HEADER', 'rexdev_header_add',array($header));
-}
-
-
 // SUBPAGES
 //////////////////////////////////////////////////////////////////////////////
 $REX['ADDON'][$mypage]['SUBPAGES'] = array (

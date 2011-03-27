@@ -12,7 +12,7 @@
 
 // PARAMS
 ////////////////////////////////////////////////////////////////////////////////
-$myself      = rex_request('page'     ,'string');
+$mypage      = rex_request('page'     ,'string');
 $subpage     = rex_request('subpage'  ,'string');
 $func        = rex_request('func'     ,'string');
 $httpsdomain = rex_request('httpsdomain'     ,'string');
@@ -25,10 +25,10 @@ if($func=='savesettings')
   $httpsdomain = rtrim(trim($httpsdomain),'/');
   $httpsdomain = str_replace('https://','',$httpsdomain);
 
-  $REX['ADDON'][$myself]['httpsdomain'] = $httpsdomain;
+  $REX['ADDON'][$mypage]['httpsdomain'] = $httpsdomain;
 
-  $DYN = '$REX["ADDON"]["'.$myself.'"]["httpsdomain"] = \''.$httpsdomain.'\';';
-  $file = $REX['INCLUDE_PATH'].'/addons/'.$myself.'/config.inc.php';
+  $DYN = '$REX["ADDON"]["'.$mypage.'"]["httpsdomain"] = \''.$httpsdomain.'\';';
+  $file = $REX['INCLUDE_PATH'].'/addons/'.$mypage.'/config.inc.php';
 
   rex_replace_dynamic_contents($file, $DYN);
   echo rex_info('Einstellungen wurden gespeichert.');
@@ -36,9 +36,9 @@ if($func=='savesettings')
 
 
 // SWITCH HTTP/HTTPS
-if($REX['ADDON'][$myself]['httpsdomain']!='')
+if($REX['ADDON'][$mypage]['httpsdomain']!='')
 {
-  $domain = 'https://'.$REX['ADDON'][$myself]['httpsdomain'];
+  $domain = 'https://'.$REX['ADDON'][$mypage]['httpsdomain'];
 }
 else
 {
@@ -55,7 +55,7 @@ echo '
     <div class="rex-form">
 
     <form action="index.php" method="POST"">
-      <input type="hidden" name="page"            value="'.$myself.'" />
+      <input type="hidden" name="page"            value="'.$mypage.'" />
       <input type="hidden" name="subpage"         value="'.$subpage.'" />
       <input type="hidden" name="func"            value="savesettings" />
       
@@ -67,7 +67,7 @@ echo '
               <div class="rex-form-row">
                 <p class="rex-form-col-a rex-form-text">
                   <label for="httpsdomain">HTTPS Domain:</label>
-                  <strong>https://</strong> <input style="width:200px;" id="httpsdomain" class="rex-form-text" type="text" name="httpsdomain" value="'.stripslashes($REX['ADDON'][$myself]['httpsdomain']).'" />
+                  <strong>https://</strong> <input style="width:200px;" id="httpsdomain" class="rex-form-text" type="text" name="httpsdomain" value="'.stripslashes($REX['ADDON'][$mypage]['httpsdomain']).'" />
                 </p>
               </div><!-- .rex-form-row -->
 

@@ -14,27 +14,27 @@
 
 // ADDON VARS
 ////////////////////////////////////////////////////////////////////////////////
-$myself = 'mysql_tools';
-$myroot = $REX['INCLUDE_PATH'].'/addons/'.$myself.'/';
+$mypage = 'mysql_tools';
+$myroot = $REX['INCLUDE_PATH'].'/addons/'.$mypage.'/';
 
 
 // ADDON REX COMMONS
 ////////////////////////////////////////////////////////////////////////////////
-$REX['ADDON']['rxid'][$myself]        = '895';
-$REX['ADDON']['page'][$myself]        = $myself;
-$REX['ADDON']['name'][$myself]        = 'MySQL Tools';
+$REX['ADDON']['rxid'][$mypage]        = '895';
+$REX['ADDON']['page'][$mypage]        = $mypage;
+$REX['ADDON']['name'][$mypage]        = 'MySQL Tools';
 $Revision = '';
-$REX['ADDON'][$myself]['VERSION'] = array
+$REX['ADDON'][$mypage]['VERSION'] = array
 (
 'VERSION'      => 0,
 'MINORVERSION' => 1,
 'SUBVERSION'   => preg_replace('/[^0-9]/','',"$Revision$")
 );
-$REX['ADDON']['version'][$myself]     = implode('.', $REX['ADDON'][$myself]['VERSION']);
-$REX['ADDON']['author'][$myself]      = 'rexdev.de';
-$REX['ADDON']['supportpage'][$myself] = 'forum.redaxo.de';
-$REX['ADDON']['perm'][$myself]        = $myself.'[]';
-$REX['PERM'][]                        = $myself.'[]';
+$REX['ADDON']['version'][$mypage]     = implode('.', $REX['ADDON'][$mypage]['VERSION']);
+$REX['ADDON']['author'][$mypage]      = 'rexdev.de';
+$REX['ADDON']['supportpage'][$mypage] = 'forum.redaxo.de';
+$REX['ADDON']['perm'][$mypage]        = $mypage.'[]';
+$REX['PERM'][]                        = $mypage.'[]';
 
 
 // SETTINGS
@@ -62,7 +62,7 @@ if ($REX['REDAXO'])
 
 // BACKEND CSS
 ////////////////////////////////////////////////////////////////////////////////
-$header = '  <link rel="stylesheet" type="text/css" href="../files/addons/'.$myself.'/backend.css" media="screen, projection, print" />';
+$header = '  <link rel="stylesheet" type="text/css" href="../files/addons/'.$mypage.'/backend.css" media="screen, projection, print" />';
 
 if ($REX['REDAXO']) {
   rex_register_extension('PAGE_HEADER', 'rexdev_header_add',array($header));
@@ -71,7 +71,7 @@ if ($REX['REDAXO']) {
 
 // SUBPAGES
 //////////////////////////////////////////////////////////////////////////////
-$REX['ADDON'][$myself]['SUBPAGES'] = array (
+$REX['ADDON'][$mypage]['SUBPAGES'] = array (
   //     subpage    ,label                         ,perm   ,params               ,attributes
   array (''         ,'Settings'                    ,''     ,''                   ,''),
   array ('adminer'  ,'Adminer'                     ,''     ,''                   ,''),
@@ -82,9 +82,9 @@ $REX['ADDON'][$myself]['SUBPAGES'] = array (
 
 // DUMP HTACCESS FILES
 //////////////////////////////////////////////////////////////////////////////
-$adminer_ht  = $REX['INCLUDE_PATH'].'/addons/'.$myself.'/libs/adminer-3.2.1/adminer/.htaccess';
-$editor_ht   = $REX['INCLUDE_PATH'].'/addons/'.$myself.'/libs/adminer-3.2.1/editor/.htaccess';
-$sqlbuddy_ht = $REX['INCLUDE_PATH'].'/addons/'.$myself.'/libs/sqlbuddy-1.3.3/.htaccess';
+$adminer_ht  = $REX['INCLUDE_PATH'].'/addons/'.$mypage.'/libs/adminer-3.2.1/adminer/.htaccess';
+$editor_ht   = $REX['INCLUDE_PATH'].'/addons/'.$mypage.'/libs/adminer-3.2.1/editor/.htaccess';
+$sqlbuddy_ht = $REX['INCLUDE_PATH'].'/addons/'.$mypage.'/libs/sqlbuddy-1.3.3/.htaccess';
 
 if($REX['REDAXO'] && !isset($REX['USER']))
 {

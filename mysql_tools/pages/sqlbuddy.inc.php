@@ -12,15 +12,15 @@
 
 // PARAMS
 ////////////////////////////////////////////////////////////////////////////////
-$myself      = rex_request('page'     ,'string');
+$mypage      = rex_request('page'     ,'string');
 $subpage     = rex_request('subpage'  ,'string');
 $func        = rex_request('func'     ,'string');
 
 
 // SWITCH HTTP/HTTPS
-if($REX['ADDON'][$myself]['httpsdomain']!='')
+if($REX['ADDON'][$mypage]['httpsdomain']!='')
 {
-  $domain = 'https://'.$REX['ADDON'][$myself]['httpsdomain'];
+  $domain = 'https://'.$REX['ADDON'][$mypage]['httpsdomain'];
 }
 else
 {
@@ -37,7 +37,7 @@ echo '
     <div class="rex-form">
 
     <form action="index.php" method="POST"">
-      <input type="hidden" name="page"            value="'.$myself.'" />
+      <input type="hidden" name="page"            value="'.$mypage.'" />
       <input type="hidden" name="subpage"         value="'.$subpage.'" />
       <input type="hidden" name="func"            value="sqlbuddystart" />
 
@@ -66,7 +66,7 @@ echo '
 if($func=='sqlbuddystart')
 {
   // SETUP HTACCESS
-  $ht_file  = $REX['INCLUDE_PATH'].'/addons/'.$myself.'/libs/sqlbuddy-1.3.3/.htaccess';
+  $ht_file  = $REX['INCLUDE_PATH'].'/addons/'.$mypage.'/libs/sqlbuddy-1.3.3/.htaccess';
   $ht_conts = 'Order Deny,Allow
 Deny from all
 Allow from '.$_SERVER['REMOTE_ADDR'];
@@ -76,7 +76,7 @@ Allow from '.$_SERVER['REMOTE_ADDR'];
   <div class="rex-addon-output">
     <div class="rex-form">
   
-    <form id="opensqlbuddy" action="'.$domain.'/redaxo/include/addons/'.$myself.'/libs/sqlbuddy-1.3.3/login.php" method="POST" target="sqlbuddy_'.$_REQUEST['PHPSESSID'].'">
+    <form id="opensqlbuddy" action="'.$domain.'/redaxo/include/addons/'.$mypage.'/libs/sqlbuddy-1.3.3/login.php" method="POST" target="sqlbuddy_'.$_REQUEST['PHPSESSID'].'">
       <input type="hidden" name="USER"        value="'.$REX['DB']['1']['LOGIN'].'" />
       <input type="hidden" name="HOST"        value="'.$REX['DB']['1']['HOST'].'" />
       <input type="hidden" name="PASS"        value="'.$REX['DB']['1']['PSW'].'" />

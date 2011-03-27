@@ -12,7 +12,7 @@
 
 // GET PARAMS
 ////////////////////////////////////////////////////////////////////////////////
-$myself   = rex_request('page', 'string');
+$mypage   = rex_request('page', 'string');
 $subpage  = rex_request('subpage', 'string');
 $faceless = rex_request('faceless', 'string');
 
@@ -24,7 +24,7 @@ if($faceless != 1)
 
   // TITLE & SUBPAGE NAVIGATION
   //////////////////////////////////////////////////////////////////////////////
-  rex_title($REX['ADDON']['name'][$myself].' <span class="addonversion">'.$REX['ADDON']['version'][$myself].'</span>', $REX['ADDON'][$myself]['SUBPAGES']);
+  rex_title($REX['ADDON']['name'][$mypage].' <span class="addonversion">'.$REX['ADDON']['version'][$mypage].'</span>', $REX['ADDON'][$mypage]['SUBPAGES']);
 
   // INCLUDE REQUESTED SUBPAGE
   //////////////////////////////////////////////////////////////////////////////
@@ -32,7 +32,7 @@ if($faceless != 1)
   {
     $subpage = 'settings';  /* DEFAULT SUBPAGE */
   }
-  require $REX['INCLUDE_PATH'] . '/addons/'.$myself.'/pages/'.$subpage.'.inc.php';
+  require $REX['INCLUDE_PATH'] . '/addons/'.$mypage.'/pages/'.$subpage.'.inc.php';
 
   // JS SCRIPT FÜR LINKS IN NEUEN FENSTERN (per <a class="jsopenwin">)
   ////////////////////////////////////////////////////////////////////////////////
@@ -67,5 +67,5 @@ if($faceless != 1)
 }
 else
 {
-  require $REX['INCLUDE_PATH'] . '/addons/'.$myself.'/pages/'.$subpage.'.inc.php';
+  require $REX['INCLUDE_PATH'] . '/addons/'.$mypage.'/pages/'.$subpage.'.inc.php';
 }

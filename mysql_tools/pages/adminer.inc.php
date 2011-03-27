@@ -12,15 +12,15 @@
 
 // PARAMS
 ////////////////////////////////////////////////////////////////////////////////
-$myself      = rex_request('page'     ,'string');
+$mypage      = rex_request('page'     ,'string');
 $subpage     = rex_request('subpage'  ,'string');
 $func        = rex_request('func'     ,'string');
 
 
 // SWITCH HTTP/HTTPS
-if($REX['ADDON'][$myself]['httpsdomain']!='')
+if($REX['ADDON'][$mypage]['httpsdomain']!='')
 {
-  $domain = 'https://'.$REX['ADDON'][$myself]['httpsdomain'];
+  $domain = 'https://'.$REX['ADDON'][$mypage]['httpsdomain'];
 }
 else
 {
@@ -37,7 +37,7 @@ echo '
     <div class="rex-form">
 
     <form action="index.php" method="POST"">
-      <input type="hidden" name="page"            value="'.$myself.'" />
+      <input type="hidden" name="page"            value="'.$mypage.'" />
       <input type="hidden" name="subpage"         value="'.$subpage.'" />
       <input type="hidden" name="func"            value="adminerstart" />
 
@@ -63,7 +63,7 @@ echo '
     <div class="rex-form">
 
     <form action="index.php" method="POST"">
-      <input type="hidden" name="page"            value="'.$myself.'" />
+      <input type="hidden" name="page"            value="'.$mypage.'" />
       <input type="hidden" name="subpage"         value="'.$subpage.'" />
       <input type="hidden" name="func"            value="editorstart" />
 
@@ -92,7 +92,7 @@ echo '
 if($func=='adminerstart')
 {
   // SETUP HTACCESS
-  $ht_file  = $REX['INCLUDE_PATH'].'/addons/'.$myself.'/libs/adminer-3.2.1/adminer/.htaccess';
+  $ht_file  = $REX['INCLUDE_PATH'].'/addons/'.$mypage.'/libs/adminer-3.2.1/adminer/.htaccess';
   $ht_conts = 'Order Deny,Allow
 Deny from all
 Allow from '.$_SERVER['REMOTE_ADDR'];
@@ -102,7 +102,7 @@ Allow from '.$_SERVER['REMOTE_ADDR'];
   <div class="rex-addon-output">
     <div class="rex-form">
   
-    <form id="openadminer" action="'.$domain.'/redaxo/include/addons/'.$myself.'/libs/adminer-3.2.1/adminer/index.php" method="POST" target="adminer_'.$_REQUEST['PHPSESSID'].'">
+    <form id="openadminer" action="'.$domain.'/redaxo/include/addons/'.$mypage.'/libs/adminer-3.2.1/adminer/index.php" method="POST" target="adminer_'.$_REQUEST['PHPSESSID'].'">
       <input type="hidden" name="username"        value="'.$REX['DB']['1']['LOGIN'].'" />
       <input type="hidden" name="server"          value="'.$REX['DB']['1']['HOST'].'" />
       <input type="hidden" name="password"        value="'.$REX['DB']['1']['PSW'].'" />
@@ -140,8 +140,8 @@ Allow from '.$_SERVER['REMOTE_ADDR'];
 if($func=='editorstart')
 {
   // SETUP HTACCESS
-  $adminer_ht  = $REX['INCLUDE_PATH'].'/addons/'.$myself.'/libs/adminer-3.2.1/adminer/.htaccess';
-  $editor_ht   = $REX['INCLUDE_PATH'].'/addons/'.$myself.'/libs/adminer-3.2.1/editor/.htaccess';
+  $adminer_ht  = $REX['INCLUDE_PATH'].'/addons/'.$mypage.'/libs/adminer-3.2.1/adminer/.htaccess';
+  $editor_ht   = $REX['INCLUDE_PATH'].'/addons/'.$mypage.'/libs/adminer-3.2.1/editor/.htaccess';
   $ht_conts    = 'Order Deny,Allow
 Deny from all
 Allow from '.$_SERVER['REMOTE_ADDR'];
@@ -152,7 +152,7 @@ echo '
   <div class="rex-addon-output">
     <div class="rex-form">
   
-    <form id="openeditor" action="'.$domain.'/redaxo/include/addons/'.$myself.'/libs/adminer-3.2.1/editor/index.php" method="POST" target="adminereditor_'.$_REQUEST['PHPSESSID'].'">
+    <form id="openeditor" action="'.$domain.'/redaxo/include/addons/'.$mypage.'/libs/adminer-3.2.1/editor/index.php" method="POST" target="adminereditor_'.$_REQUEST['PHPSESSID'].'">
       <input type="hidden" name="username"        value="'.$REX['DB']['1']['LOGIN'].'" />
       <input type="hidden" name="server"          value="'.$REX['DB']['1']['HOST'].'" />
       <input type="hidden" name="password"        value="'.$REX['DB']['1']['PSW'].'" />

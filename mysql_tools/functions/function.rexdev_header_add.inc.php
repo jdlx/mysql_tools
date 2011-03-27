@@ -13,8 +13,8 @@
 * ---------------------------------------------------------------
 * // include als array (zwingend, auch wenn nur ein wert!)
 * $inc = array (
-* '<link rel="stylesheet" type="text/css" href="../files/addons/'.$myself.'/backend.css" />,
-* '<script type="text/javascript" src="../files/addons/'.$myself.'/foo.js"></script>'
+* '<link rel="stylesheet" type="text/css" href="../files/addons/'.$mypage.'/backend.css" />,
+* '<script type="text/javascript" src="../files/addons/'.$mypage.'/foo.js"></script>'
 * );
 *
 * // include per 3. parameter an ep übergeben

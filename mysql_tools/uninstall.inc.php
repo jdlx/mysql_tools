@@ -12,7 +12,7 @@
 
 // ADDON IDENTIFIER AUS GET PARAMS
 ////////////////////////////////////////////////////////////////////////////////
-$myself = rex_request('addonname','string');
+$myself = 'mysql_tools';
 
 
 $REX['ADDON']['install'][$myself] = 0;

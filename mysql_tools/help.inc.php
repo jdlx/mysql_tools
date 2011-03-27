@@ -10,11 +10,9 @@
 * $Id$:
 */
 
-// ADDON IDENTIFIER AUS ORDNERNAMEN ABLEITEN
+// ADDON VARS
 ////////////////////////////////////////////////////////////////////////////////
-$myself = explode('/redaxo/include/addons/',str_replace(DIRECTORY_SEPARATOR, '/' ,__FILE__));
-$myself = explode('/',$myself[1]);
-$myself = $myself[0];
+$myself = 'mysql_tools';
 $myroot = $REX['INCLUDE_PATH'].'/addons/'.$myself.'/';
 
 // LOCAL INCLUDES

@@ -338,8 +338,9 @@ function a895_htaccessDelete($ht_owner='all')
 
     default:
       $ht_file = $REX['ADDON'][$mypage]['ht_files'][$ht_owner];
-      if(!unlink($ht_file))
-        $ret = false;
+      if(file_exists($ht_file))
+        if(!unlink($ht_file))
+          $ret = false;
   }
   return $ret;
 }

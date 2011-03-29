@@ -14,171 +14,144 @@
 $mypage      = rex_request('page'     ,'string');
 $subpage     = rex_request('subpage'  ,'string');
 $func        = rex_request('func'     ,'string');
+$domain      = a895_getDomain();
 
 
-// SWITCH HTTP/HTTPS
-if($REX['ADDON'][$mypage]['httpsdomain']!='')
-{
-  $domain = 'https://'.$REX['ADDON'][$mypage]['httpsdomain'];
-}
-else
-{
-  $domain = 'http://'.$_SERVER['HTTP_HOST'];
-}
-
-
-// MAIN PAGE
+// ABORT SESSION
 ////////////////////////////////////////////////////////////////////////////////
-if($func=='')
+if($func=='abortadminer') 
 {
-echo '
-  <div class="rex-addon-output">
-    <div class="rex-form">
-
-    <form action="index.php" method="POST"">
-      <input type="hidden" name="page"            value="'.$mypage.'" />
-      <input type="hidden" name="subpage"         value="'.$subpage.'" />
-      <input type="hidden" name="func"            value="adminerstart" />
-
-          <fieldset class="rex-form-col-1">
-            <legend>Adminer 3.2.1</legend>
-            <div class="rex-form-wrapper">
-
-              <div class="rex-form-row rex-form-element-v2">
-                <p class="rex-form-submit">
-                  <input class="rex-form-submit" type="submit" id="submit" name="submit" value="Adminer Session starten" />
-                </p>
-              </div><!-- .rex-form-row -->
-
-            </div><!-- .rex-form-wrapper -->
-          </fieldset>
-
-    </form>
-
-    </div><!-- .rex-form -->
-  </div><!-- .rex-addon-output -->
-
-  <div class="rex-addon-output">
-    <div class="rex-form">
-
-    <form action="index.php" method="POST"">
-      <input type="hidden" name="page"            value="'.$mypage.'" />
-      <input type="hidden" name="subpage"         value="'.$subpage.'" />
-      <input type="hidden" name="func"            value="editorstart" />
-
-          <fieldset class="rex-form-col-1">
-            <legend>Adminer Editor 3.2.1</legend>
-            <div class="rex-form-wrapper">
-
-              <div class="rex-form-row rex-form-element-v2">
-                <p class="rex-form-submit">
-                  <input class="rex-form-submit" type="submit" id="submit" name="submit" value="Editor Session starten" />
-                </p>
-              </div><!-- .rex-form-row -->
-
-            </div><!-- .rex-form-wrapper -->
-          </fieldset>
-
-    </form>
-
-    </div><!-- .rex-form -->
-  </div><!-- .rex-addon-output -->';
+  if(a895_endSession('adminer'))
+  {
+    echo rex_info('Adminer Session beendet.');
+  }
 }
 
 
-// LAUNCH ADMINER
+// SESSION START FORM
+////////////////////////////////////////////////////////////////////////////////
+if(($func=='' || $func=='abortadminer') && !isset($REX['ADDON'][$mypage]['settings']['sessions']['adminer']))
+{
+  echo '
+    <div class="rex-addon-output">
+      <div class="rex-form">
+  
+      <form action="index.php" method="POST"">
+        <input type="hidden" name="page"            value="'.$mypage.'" />
+        <input type="hidden" name="subpage"         value="'.$subpage.'" />
+        <input type="hidden" name="func"            value="adminerstart" />
+  
+            <fieldset class="rex-form-col-1">
+              <legend>Adminer 3.2.1</legend>
+              <div class="rex-form-wrapper">
+  
+                <div class="rex-form-row rex-form-element-v2">
+                  <p class="rex-form-submit">
+                    <input class="rex-form-submit" type="submit" id="submit" name="submit" value="Adminer Session starten" />
+                  </p>
+                </div><!-- .rex-form-row -->
+  
+              </div><!-- .rex-form-wrapper -->
+            </fieldset>
+  
+      </form>
+  
+      </div><!-- .rex-form -->
+    </div><!-- .rex-addon-output -->';
+}
+
+
+// HIDDEN ADMINER LAUNCH FORM
 ////////////////////////////////////////////////////////////////////////////////
 if($func=='adminerstart')
 {
-  // SETUP HTACCESS
-  $ht_file  = $REX['INCLUDE_PATH'].'/addons/'.$mypage.'/libs/adminer-3.2.1/adminer/.htaccess';
-  $ht_conts = 'Order Deny,Allow
-Deny from all
-Allow from '.$_SERVER['REMOTE_ADDR'];
-  rex_put_file_contents($ht_file,$ht_conts);
+  // SETUP HTACCESS, LOCK SESSION
+  a895_startSession('adminer');
 
   echo '
-  <div class="rex-addon-output">
-    <div class="rex-form">
-  
-    <form id="openadminer" action="'.$domain.'/redaxo/include/addons/'.$mypage.'/libs/adminer-3.2.1/adminer/index.php" method="POST" target="adminer_'.$_REQUEST['PHPSESSID'].'">
-      <input type="hidden" name="username"        value="'.$REX['DB']['1']['LOGIN'].'" />
-      <input type="hidden" name="server"          value="'.$REX['DB']['1']['HOST'].'" />
-      <input type="hidden" name="password"        value="'.$REX['DB']['1']['PSW'].'" />
-      <input type="hidden" name="db"              value="'.$REX['DB']['1']['NAME'].'" />
-      <input type="hidden" name="adminer_version" value="3.2.0" />
-      <input type="hidden" name="driver"          value="server" />
-      
+    <div class="rex-addon-output" style="display:none;">
+      <div class="rex-form">
+
+        <form id="openadminer" action="'.$domain.'/redaxo/include/addons/'.$mypage.'/libs/adminer-3.2.1/adminer/index.php" method="POST" target="adminer_'.$_REQUEST['PHPSESSID'].'">
+          <input type="hidden" name="username"        value="'.$REX['DB']['1']['LOGIN'].'" />
+          <input type="hidden" name="server"          value="'.$REX['DB']['1']['HOST'].'" />
+          <input type="hidden" name="password"        value="'.$REX['DB']['1']['PSW'].'" />
+          <input type="hidden" name="db"              value="'.$REX['DB']['1']['NAME'].'" />
+          <input type="hidden" name="adminer_version" value="3.2.0" />
+          <input type="hidden" name="driver"          value="server" />
+
           <fieldset class="rex-form-col-1">
-            <legend>Adminer Login..</legend>
+            <legend>Adminer 3.2.1..</legend>
             <div class="rex-form-wrapper">
-  
+
               <div class="rex-form-row rex-form-element-v2">
                 <p class="rex-form-submit">
                   <input class="rex-form-submit" type="submit" value="Adminer Fenster öffnen" />
                 </p>
               </div><!-- .rex-form-row -->
-  
+
             </div><!-- .rex-form-wrapper -->
           </fieldset>
-  
-    </form>
-  
-    </div><!-- .rex-form -->
-  </div><!-- .rex-addon-output -->
 
-  <script type="text/javascript">
-    document.getElementById("openadminer").submit();
-  </script>
-  ';
+        </form>
+
+      </div><!-- .rex-form -->
+    </div><!-- .rex-addon-output -->
+
+
+    <script type="text/javascript">
+      document.getElementById("openadminer").submit();
+    </script>';
 }
 
 
-// LAUNCH EDITOR
+// ACTIVE SESSION FORM
 ////////////////////////////////////////////////////////////////////////////////
-if($func=='editorstart')
+if(isset($REX['ADDON'][$mypage]['settings']['sessions']['adminer']['user']))
 {
-  // SETUP HTACCESS
-  $adminer_ht  = $REX['INCLUDE_PATH'].'/addons/'.$mypage.'/libs/adminer-3.2.1/adminer/.htaccess';
-  $editor_ht   = $REX['INCLUDE_PATH'].'/addons/'.$mypage.'/libs/adminer-3.2.1/editor/.htaccess';
-  $ht_conts    = 'Order Deny,Allow
-Deny from all
-Allow from '.$_SERVER['REMOTE_ADDR'];
-  rex_put_file_contents($adminer_ht,$ht_conts);
-  rex_put_file_contents($editor_ht ,$ht_conts);
+  // SESSION ABORT PERM
+  $disabled = a895_hasSessionPerm('adminer','css');
 
-echo '
-  <div class="rex-addon-output">
-    <div class="rex-form">
+  echo '
+    <div class="rex-addon-output">
+      <div class="rex-form">
   
-    <form id="openeditor" action="'.$domain.'/redaxo/include/addons/'.$mypage.'/libs/adminer-3.2.1/editor/index.php" method="POST" target="adminereditor_'.$_REQUEST['PHPSESSID'].'">
-      <input type="hidden" name="username"        value="'.$REX['DB']['1']['LOGIN'].'" />
-      <input type="hidden" name="server"          value="'.$REX['DB']['1']['HOST'].'" />
-      <input type="hidden" name="password"        value="'.$REX['DB']['1']['PSW'].'" />
-      <input type="hidden" name="db"              value="'.$REX['DB']['1']['NAME'].'" />
-      <input type="hidden" name="adminer_version" value="3.2.0" />
-      <input type="hidden" name="driver"          value="server" />
-      
-          <fieldset class="rex-form-col-1">
-            <legend>Adminer Editor Login..</legend>
-            <div class="rex-form-wrapper">
+      <form action="index.php" method="POST"">
+        <input type="hidden" name="page"            value="'.$mypage.'" />
+        <input type="hidden" name="subpage"         value="'.$subpage.'" />
+        <input type="hidden" name="func" value="abortadminer" />
   
-              <div class="rex-form-row rex-form-element-v2">
-                <p class="rex-form-submit">
-                  <input class="rex-form-submit" type="submit" value="Adminer Editor Fenster öffnen" />
-                </p>
-              </div><!-- .rex-form-row -->
+        
+            <fieldset class="rex-form-col-1">
+              <legend>Aktive Adminer Session</legend>
+              <div class="rex-form-wrapper">
   
-            </div><!-- .rex-form-wrapper -->
-          </fieldset>
+                <div class="rex-form-row">
+                  <p class="rex-form-col-a rex-form-text">
+                    <label for="sessionuser">User:</label>
+                    <input disabled="disabled" id="sessionuser" class="rex-form-text" type="text" name="sessionuser" value="'.$REX['ADDON'][$mypage]['settings']['sessions']['adminer']['user'].'" />
+                  </p>
+                </div><!-- .rex-form-row -->
   
-    </form>
+                <div class="rex-form-row">
+                  <p class="rex-form-col-a rex-form-text">
+                    <label for="sessionuser">IP:</label>
+                    <input disabled="disabled" id="sessionuser" class="rex-form-text" type="text" name="sessionuser" value="'.$REX['ADDON'][$mypage]['settings']['sessions']['adminer']['ip'].'" />
+                  </p>
+                </div><!-- .rex-form-row -->
   
-    </div><!-- .rex-form -->
-  </div><!-- .rex-addon-output -->
-
-  <script type="text/javascript">
-    document.getElementById("openeditor").submit();
-  </script>
+                <div class="rex-form-row rex-form-element-v2">
+                  <p class="rex-form-submit">
+                    <input '.$disabled.' class="rex-form-submit" type="submit" value="Session beenden" />
+                  </p>
+                </div><!-- .rex-form-row -->
+  
+              </div><!-- .rex-form-wrapper -->
+            </fieldset>
+  
+      </form>
+  
+      </div><!-- .rex-form -->
+    </div><!-- .rex-addon-output -->
   ';
 }

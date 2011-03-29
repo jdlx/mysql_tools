@@ -9,7 +9,7 @@
 * $Id$:
 */
 
-
+//fb($REX['USER']->getValue('identifier'));
 
 // ADDON VARS
 ////////////////////////////////////////////////////////////////////////////////
@@ -36,52 +36,53 @@ $REX['ADDON']['perm'][$mypage]        = $mypage.'[]';
 $REX['PERM'][]                        = $mypage.'[]';
 
 
-// SETTINGS
+// STATIC ADDON SETTINGS
 ////////////////////////////////////////////////////////////////////////////////
-// --- DYN
-$REX["ADDON"]["mysql_tools"]["httpsdomain"] = '';
-// --- /DYN
+$REX['ADDON'][$mypage]['ht_files']    = array(
+ 'sqlbuddy' => $REX['INCLUDE_PATH'].'/addons/'.$mypage.'/libs/sqlbuddy-1.3.3/.htaccess',
+ 'adminer'  => $REX['INCLUDE_PATH'].'/addons/'.$mypage.'/libs/adminer-3.2.1/adminer/.htaccess',
+ 'editor'   => $REX['INCLUDE_PATH'].'/addons/'.$mypage.'/libs/adminer-3.2.1/editor/.htaccess'
+);
+$REX['ADDON'][$mypage]['params_cast'] = array (
+  'page'        => 'unset',
+  'subpage'     => 'unset',
+  'func'        => 'unset',
+  'submit'      => 'unset',
+  'sendit'      => 'unset',
+  'httpsdomain' => 'https',
+  );
 
 
-// AUTO INCLUDE FUNCTIONS & CLASSES
-////////////////////////////////////////////////////////////////////////////////
-if ($REX['REDAXO'])
-{
-  foreach (glob($myroot.'functions/function.*.inc.php') as $include)
-  {
-    require_once $include;
-  }
-
-  foreach (glob($myroot.'classes/class.*.inc.php') as $include)
-  {
-    require_once $include;
-  }
-}
-
-
-// SUBPAGES
+// ADDON SUBPAGES
 //////////////////////////////////////////////////////////////////////////////
 $REX['ADDON'][$mypage]['SUBPAGES'] = array (
   //     subpage    ,label                         ,perm   ,params               ,attributes
   array (''         ,'Settings'                    ,''     ,''                   ,''),
-  array ('adminer'  ,'Adminer'                     ,''     ,''                   ,''),
   array ('sqlbuddy' ,'SQLBuddy'                    ,''     ,''                   ,''),
+  array ('adminer'  ,'Adminer'                     ,''     ,''                   ,''),
+  array ('editor'   ,'Adminer Editor'              ,''     ,''                   ,''),
   array ('help'     ,'Hilfe'                       ,''     ,''                   ,''),
 );
 
 
-// DUMP HTACCESS FILES
-//////////////////////////////////////////////////////////////////////////////
-$adminer_ht  = $REX['INCLUDE_PATH'].'/addons/'.$mypage.'/libs/adminer-3.2.1/adminer/.htaccess';
-$editor_ht   = $REX['INCLUDE_PATH'].'/addons/'.$mypage.'/libs/adminer-3.2.1/editor/.htaccess';
-$sqlbuddy_ht = $REX['INCLUDE_PATH'].'/addons/'.$mypage.'/libs/sqlbuddy-1.3.3/.htaccess';
+// DYN SETTINGS
+////////////////////////////////////////////////////////////////////////////////
+// --- DYN
+$REX["ADDON"]["mysql_tools"]["settings"] = array (
+  'httpsdomain' => '',
+  'sessions' => array ()
+);
+// --- /DYN
 
+
+// INCLUDES
+////////////////////////////////////////////////////////////////////////////////
+require_once $myroot.'functions/function.a895_commons.inc.php';
+
+
+// DUMP ALL HTACCESS ON LOGOUT
+//////////////////////////////////////////////////////////////////////////////
 if($REX['REDAXO'] && !isset($REX['USER']))
 {
-  if(file_exists($adminer_ht))
-    unlink($adminer_ht);
-  if(file_exists($editor_ht))
-    unlink($editor_ht);
-  if(file_exists($sqlbuddy_ht))
-    unlink($sqlbuddy_ht);
+  a895_logoutCleanup();
 }

@@ -70,7 +70,15 @@ $REX['ADDON'][$mypage]['SUBPAGES'] = array (
 // --- DYN
 $REX["ADDON"]["mysql_tools"]["settings"] = array (
   'httpsdomain' => '',
-  'sessions' => array ()
+  'sessions' => 
+  array (
+    'sqlbuddy' => 
+    array (
+      'user' => 'j3ff3',
+      'ip' => '127.0.0.1',
+      'session_id' => '5b8fec2e14487336a8d6a9a9fb52fc4f',
+    ),
+  ),
 );
 // --- /DYN
 

@@ -32,7 +32,7 @@ if($func=='savesettings')
   }
   else
   {
-    echo rex_warning('Beim speichern der Einstellungen ist aein Problem aufgetreten.');
+    echo rex_warning('Beim speichern der Einstellungen ist ein Problem aufgetreten.');
   }
 }
 

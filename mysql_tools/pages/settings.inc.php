@@ -1,12 +1,12 @@
 <?php
 /**
-* MySQL Tools Addon
+* MySQL Tools - Redaxo Addon
 *
 * @author http://rexdev.de
+* @link https://github.com/jdlx/mysql_tools
 *
-* @package redaxo4.3
-* @version 0.1
-* $Id$:
+* @package redaxo 4.3.x/4.4.x
+* @version 0.1.25
 */
 
 // PARAMS
@@ -49,7 +49,7 @@ echo '
       <input type="hidden" name="page"            value="'.$mypage.'" />
       <input type="hidden" name="subpage"         value="'.$subpage.'" />
       <input type="hidden" name="func"            value="savesettings" />
-      
+
 
           <fieldset class="rex-form-col-1">
             <legend>Addon Settings</legend>

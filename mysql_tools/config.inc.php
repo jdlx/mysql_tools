@@ -3,13 +3,11 @@
 * MySQL Tools Addon
 *
 * @author http://rexdev.de
+* @link https://github.com/jdlx/mysql_tools
 *
-* @package redaxo4.3
-* @version 0.1
-* $Id$:
+* @package redaxo 4.3.x/4.4.x
+* @version 0.1.25
 */
-
-//fb($REX['USER']->getValue('identifier'));
 
 // ADDON VARS
 ////////////////////////////////////////////////////////////////////////////////
@@ -27,7 +25,7 @@ $REX['ADDON'][$mypage]['VERSION'] = array
 (
 'VERSION'      => 0,
 'MINORVERSION' => 1,
-'SUBVERSION'   => preg_replace('/[^0-9]/','',"$Revision$")
+'SUBVERSION'   => 25
 );
 $REX['ADDON']['version'][$mypage]     = implode('.', $REX['ADDON'][$mypage]['VERSION']);
 $REX['ADDON']['author'][$mypage]      = 'rexdev.de';
@@ -70,9 +68,9 @@ $REX['ADDON'][$mypage]['SUBPAGES'] = array (
 // --- DYN
 $REX["ADDON"]["mysql_tools"]["settings"] = array (
   'httpsdomain' => '',
-  'sessions' => 
+  'sessions' =>
   array (
-    'sqlbuddy' => 
+    'sqlbuddy' =>
     array (
       'user' => 'j3ff3',
       'ip' => '127.0.0.1',

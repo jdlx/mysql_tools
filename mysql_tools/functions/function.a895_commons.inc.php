@@ -1,12 +1,12 @@
 <?php
 /**
-* MySQL Tools Addon
+* MySQL Tools - Redaxo Addon
 *
 * @author http://rexdev.de
+* @link https://github.com/jdlx/mysql_tools
 *
-* @package redaxo4.3
-* @version 0.1
-* @version svn:$Id$
+* @package redaxo 4.3.x/4.4.x
+* @version 0.1.25
 */
 
 // INCLUDE PARSER FUNCTION
@@ -462,12 +462,12 @@ function a895_hasSessionPerm($tool=false,$mode='bool')
   $myCONF = $REX['ADDON'][$mypage]['settings'];
 
   // CHECK PERM FOR TOOL
-  if($REX['USER']->isValueOf("rights","admin[]") || 
+  if($REX['USER']->isValueOf("rights","admin[]") ||
     ($REX['USER']->getValue('login')) == $myCONF['sessions'][$tool]['user'])
   {
     $bool = true;
   }
-  
+
   // SWITCH MODE
   switch($mode)
   {

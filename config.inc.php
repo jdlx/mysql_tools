@@ -38,8 +38,8 @@ $REX['PERM'][]                        = $mypage.'[]';
 ////////////////////////////////////////////////////////////////////////////////
 $REX['ADDON'][$mypage]['ht_files']    = array(
  'sqlbuddy' => $REX['INCLUDE_PATH'].'/addons/'.$mypage.'/libs/sqlbuddy-1.3.3/.htaccess',
- 'adminer'  => $REX['INCLUDE_PATH'].'/addons/'.$mypage.'/libs/adminer-3.2.1/adminer/.htaccess',
- 'editor'   => $REX['INCLUDE_PATH'].'/addons/'.$mypage.'/libs/adminer-3.2.1/editor/.htaccess'
+ 'adminer'  => $REX['INCLUDE_PATH'].'/addons/'.$mypage.'/libs/adminer-3.6.1/adminer/.htaccess',
+ 'editor'   => $REX['INCLUDE_PATH'].'/addons/'.$mypage.'/libs/adminer-3.6.1/editor/.htaccess'
 );
 $REX['ADDON'][$mypage]['params_cast'] = array (
   'page'        => 'unset',

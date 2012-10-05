@@ -73,16 +73,16 @@ if($func=='editorstart')
     <div class="rex-addon-output" style="display:none;">
       <div class="rex-form">
 
-      <form id="openeditor" action="'.$domain.'/redaxo/include/addons/'.$mypage.'/libs/adminer-3.2.1/editor/index.php" method="POST" target="adminereditor_'.$_REQUEST['PHPSESSID'].'">
-        <input type="hidden" name="username"        value="'.$REX['DB']['1']['LOGIN'].'" />
-        <input type="hidden" name="server"          value="'.$REX['DB']['1']['HOST'].'" />
-        <input type="hidden" name="password"        value="'.$REX['DB']['1']['PSW'].'" />
-        <input type="hidden" name="db"              value="'.$REX['DB']['1']['NAME'].'" />
-        <input type="hidden" name="adminer_version" value="3.2.0" />
-        <input type="hidden" name="driver"          value="server" />
+      <form id="openeditor" action="'.$domain.'/redaxo/include/addons/'.$mypage.'/libs/adminer-3.6.1/editor/index.php" method="POST" target="adminereditor_'.$_REQUEST['PHPSESSID'].'">
+        <input type="hidden" name="auth[username]"        value="'.$REX['DB']['1']['LOGIN'].'" />
+        <input type="hidden" name="auth[server]"          value="'.$REX['DB']['1']['HOST'].'" />
+        <input type="hidden" name="auth[password]"        value="'.$REX['DB']['1']['PSW'].'" />
+        <input type="hidden" name="auth[db]"              value="'.$REX['DB']['1']['NAME'].'" />
+        <input type="hidden" name="adminer_version"       value="3.6.1" />
+        <input type="hidden" name="auth[driver]"          value="server" />
 
             <fieldset class="rex-form-col-1">
-              <legend>AdminerEditor 3.2.1..</legend>
+              <legend>AdminerEditor 3.6.1</legend>
               <div class="rex-form-wrapper">
 
                 <div class="rex-form-row rex-form-element-v2">

@@ -72,7 +72,7 @@ if($func=='adminerstart')
     <div class="rex-addon-output" style="display:none;">
       <div class="rex-form">
 
-        <form id="openadminer" action="'.$domain.'/redaxo/include/addons/'.$mypage.'/libs/adminer-3.2.1/adminer/index.php" method="POST" target="adminer_'.$_REQUEST['PHPSESSID'].'">
+        <form id="openadminer" action="'.$domain.'/redaxo/include/addons/'.$mypage.'/libs/adminer-3.6.1/adminer/index.php" method="POST" target="adminer_'.$_REQUEST['PHPSESSID'].'">
           <input type="hidden" name="username"        value="'.$REX['DB']['1']['LOGIN'].'" />
           <input type="hidden" name="server"          value="'.$REX['DB']['1']['HOST'].'" />
           <input type="hidden" name="password"        value="'.$REX['DB']['1']['PSW'].'" />

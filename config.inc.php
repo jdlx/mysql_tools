@@ -1,13 +1,26 @@
 <?php
 /**
-* MySQL Tools Addon
+* MySQL Tools - Redaxo Addon
 *
 * @author http://rexdev.de
 * @link https://github.com/jdlx/mysql_tools
 *
 * @package redaxo 4.3.x/4.4.x
-* @version 0.1.25
+* @version 1.0.0
 */
+
+/**
+* Adminer Lib
+* @link http://www.adminer.org/
+* @version 3.6.1
+*/
+
+/**
+* SQLBuddy Lib
+* @link https://github.com/calvinlough/sqlbuddy
+* @version 1.3.3
+*/
+
 
 // ADDON VARS
 ////////////////////////////////////////////////////////////////////////////////
@@ -23,9 +36,9 @@ $REX['ADDON']['name'][$mypage]        = 'MySQL Tools';
 $Revision = '';
 $REX['ADDON'][$mypage]['VERSION'] = array
 (
-'VERSION'      => 0,
-'MINORVERSION' => 1,
-'SUBVERSION'   => 25
+'VERSION'      => 1,
+'MINORVERSION' => 0,
+'SUBVERSION'   => 0
 );
 $REX['ADDON']['version'][$mypage]     = implode('.', $REX['ADDON'][$mypage]['VERSION']);
 $REX['ADDON']['author'][$mypage]      = 'rexdev.de';
